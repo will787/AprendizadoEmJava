@@ -1,15 +1,15 @@
 package bytebank_herdado;
 
-public class Funcionario {
+// nao pode instanciar, porque ela acaba sendo abstrata  - criar .
+public abstract class Funcionario { //abstrato é relacionado com herança
     
     private String nome;
     private String cpf;
     protected double salario;   //público para os filhos, acesso liberado para os filhos e privado para outras classes
 
-    public double getBonificacao() {
-        return this.salario * 0.05;
-    }
-
+    public abstract double getBonificacao(); // implementamos o método abstrato somente para as classes filhas, então só elas irão instanciar
+    //sendo o método abstrato
+    //não há metodos, nao há implmentação, logo filhos deu vida, ex : gerente, Designer, Editor de Video, etc..
     public String getNome() {
         return nome;
     }

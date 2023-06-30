@@ -8,8 +8,13 @@ public class ContaCorrente  extends Conta {
 
         @Override
         public boolean saca(double valor) {
-        // TODO Auto-generated method stub
         double valorASacar = valor + 0.20;
         return super.saca(valorASacar);
+        }
+
+        @Override
+        public void deposita(double valor) {
+            super.saldo = super.saldo + valor;
+            // ou super.saldo += valor;
         }
 }
