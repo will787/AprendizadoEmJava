@@ -2,6 +2,7 @@ package bytebank_herdado;
 
 // nao pode instanciar, porque ela acaba sendo abstrata  - criar .
 public abstract class Funcionario { //abstrato é relacionado com herança
+
     
     private String nome;
     private String cpf;
