@@ -1,4 +1,4 @@
-package bytebank_herdado_conta;
+package bytebank.banco.model;
 
 public interface Tributavel {
     

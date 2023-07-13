@@ -1,4 +1,10 @@
-package bytebank_herdado_conta;
+package bytebank.banco.model;
+
+/**
+ *Classe que representa uma moldura de uma conta.
+ * @author William Vieira
+ * @version 0.1
+ */ 
 
 public abstract class Conta {
     protected double saldo;
@@ -8,6 +14,12 @@ public abstract class Conta {
     private static int total;
 // esses acima são os atributos da conta<<
 
+    /**
+     * Construtor para inicializar o objeto Conta a partir da agencia e numero  
+     * 
+     * @param agencia
+     * @param numero
+     */
     //construtor esse abaixo...
     public Conta(int agencia, int numero) {
         Conta.total++;
@@ -19,23 +31,23 @@ public abstract class Conta {
     }
 
     public abstract void deposita(double valor);
+    /**
+     * Valor precisa ser maior que o saldo.
+     * 
+     * @param valor
+     * @throws SaldoInsuficienteException
+     */
+    public void saca(double valor) throws SaldoInsuficienteException {
 
-    public boolean saca(double valor) {
-        if(this.saldo >= valor) {
-            this.saldo -= valor;
-            return true;
-        } else {
-            return false;
-        }
+        if(this.saldo < valor) {
+            throw new SaldoInsuficienteException("Saldo: " + this.saldo + ", Valor: " + valor);
+        } 
+        this.saldo -= valor;
     }
 
-    public boolean transfere(double valor, Conta destino) {
-        if(this.saca(valor)) {
-            destino.deposita(valor);
-            return true;
-        } 
-            return false;
-
+    public void transfere(double valor, Conta destino) throws SaldoInsuficienteException {
+        this.saca(valor);
+        destino.deposita(valor);
     }
 
     public double getSaldo() {
@@ -77,4 +89,10 @@ public abstract class Conta {
     public static int getTotal() {
         return Conta.total;
     }
+
+    @Override
+    public String toString() {
+        return " Numero: " + this.numero + " Agencia: " + this.agencia;
+    }
+
 }

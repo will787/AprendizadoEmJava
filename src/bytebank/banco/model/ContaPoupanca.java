@@ -1,4 +1,4 @@
-package bytebank_herdado_conta;
+package bytebank.banco.model;
 
 public class ContaPoupanca extends Conta{
         public ContaPoupanca(int agencia, int numero) {
@@ -8,6 +8,11 @@ public class ContaPoupanca extends Conta{
         @Override
         public void deposita(double valor) {
             super.saldo = super.saldo + valor;
+        }
+
+        @Override
+        public String toString() {
+            return "ContaPoupanca, " + super.toString();
         }
 
 }
